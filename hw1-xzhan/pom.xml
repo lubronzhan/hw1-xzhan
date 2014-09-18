@@ -105,4 +105,8 @@
       <version>1.3.2</version>
     </dependency>
   </dependencies>
+  <scm>
+  	<developerConnection>scm:git:git:@github.com:lubronzhan/hw1-xzhan.git</developerConnection>
+  	<connection>scm:git:git:@github.com:lubronzhan/hw1-xzhan.git</connection>
+  </scm>
 </project>
