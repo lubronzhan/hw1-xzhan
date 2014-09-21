@@ -24,7 +24,7 @@ import java.util.regex.Pattern;
 
 import org.apache.uima.analysis_component.JCasAnnotator_ImplBase;
 import org.apache.uima.jcas.JCas;
-import org.apache.uima.tutorial.RoomNumber;
+import Java.RoomNumber;
 
 /**
  * Example annotator that detects room numbers using Java 1.4 regular expressions.

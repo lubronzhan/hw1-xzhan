@@ -1,6 +1,6 @@
 
 
-/* First created by JCasGen Sun Sep 21 16:49:46 EDT 2014 */
+/* First created by JCasGen Sun Sep 21 18:35:15 EDT 2014 */
 package Java;
 
 import org.apache.uima.jcas.JCas; 
@@ -11,8 +11,8 @@ import org.apache.uima.jcas.tcas.Annotation;
 
 
 /** 
- * Updated by JCasGen Sun Sep 21 16:49:46 EDT 2014
- * XML source: /Users/lubron/git/hw1-xzhan/hw1-xzhan/src/main/resources/Descriptor/casConsumerDescriptor.xml
+ * Updated by JCasGen Sun Sep 21 18:35:15 EDT 2014
+ * XML source: /Users/lubron/git/hw1-xzhan/hw1-xzhan/src/main/resources/Descriptor/roomNumberDescriptor.xml
  * @generated */
 public class RoomNumber extends Annotation {
   /** @generated

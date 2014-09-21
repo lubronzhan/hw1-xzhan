@@ -1,5 +1,5 @@
 
-/* First created by JCasGen Sun Sep 21 16:49:46 EDT 2014 */
+/* First created by JCasGen Sun Sep 21 18:35:15 EDT 2014 */
 package Java;
 
 import org.apache.uima.jcas.JCas;
@@ -14,7 +14,7 @@ import org.apache.uima.cas.Feature;
 import org.apache.uima.jcas.tcas.Annotation_Type;
 
 /** 
- * Updated by JCasGen Sun Sep 21 16:49:46 EDT 2014
+ * Updated by JCasGen Sun Sep 21 18:35:15 EDT 2014
  * @generated */
 public class RoomNumber_Type extends Annotation_Type {
   /** @generated 

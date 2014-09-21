@@ -10,7 +10,22 @@
     <vendor/>
     <configurationParameters/>
     <configurationParameterSettings/>
-    <typeSystemDescription/>
+    <typeSystemDescription>
+      <types>
+        <typeDescription>
+          <name>Java.RoomNumber</name>
+          <description/>
+          <supertypeName>uima.tcas.Annotation</supertypeName>
+          <features>
+            <featureDescription>
+              <name>building</name>
+              <description/>
+              <rangeTypeName>uima.cas.String</rangeTypeName>
+            </featureDescription>
+          </features>
+        </typeDescription>
+      </types>
+    </typeSystemDescription>
     <typePriorities/>
     <fsIndexCollection/>
     <capabilities>
