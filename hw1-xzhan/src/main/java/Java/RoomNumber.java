@@ -11,8 +11,8 @@ import org.apache.uima.jcas.tcas.Annotation;
 
 
 /** 
- * Updated by JCasGen Sun Sep 21 18:35:15 EDT 2014
- * XML source: /Users/lubron/git/hw1-xzhan/hw1-xzhan/src/main/resources/Descriptor/roomNumberDescriptor.xml
+ * Updated by JCasGen Mon Sep 22 10:54:14 EDT 2014
+ * XML source: /Users/lubron/git/hw1-xzhan /hw1-xzhan/src/main/resources/Descriptor/roomNumberDescriptor.xml
  * @generated */
 public class RoomNumber extends Annotation {
   /** @generated

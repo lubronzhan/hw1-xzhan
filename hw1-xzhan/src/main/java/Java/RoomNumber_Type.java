@@ -14,7 +14,7 @@ import org.apache.uima.cas.Feature;
 import org.apache.uima.jcas.tcas.Annotation_Type;
 
 /** 
- * Updated by JCasGen Sun Sep 21 18:35:15 EDT 2014
+ * Updated by JCasGen Mon Sep 22 10:54:14 EDT 2014
  * @generated */
 public class RoomNumber_Type extends Annotation_Type {
   /** @generated 

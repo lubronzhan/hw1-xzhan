@@ -228,6 +228,8 @@ public class SimpleRunCPE extends Thread {
         size += docText.length();
       }
     }
+    
+
   }
 
 }
