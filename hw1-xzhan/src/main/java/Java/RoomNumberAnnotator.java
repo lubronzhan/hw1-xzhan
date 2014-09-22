@@ -32,7 +32,7 @@ import Java.RoomNumber;
 public class RoomNumberAnnotator extends JCasAnnotator_ImplBase {
   private Pattern mYorktownPattern = Pattern.compile("\\b[0-4]\\d-[0-2]\\d\\d\\b");
 
-  private Pattern mHawthornePattern = Pattern.compile("\\b[G1-4][NS]-[A-Z]\\d\\d\\b");
+  private Pattern mHawthornePattern = Pattern.compile("t");
 
   /**
    * @see JCasAnnotator_ImplBase#process(JCas)
