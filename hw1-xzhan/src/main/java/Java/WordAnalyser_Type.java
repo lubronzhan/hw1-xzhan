@@ -14,7 +14,7 @@ import org.apache.uima.cas.Feature;
 import org.apache.uima.jcas.tcas.Annotation_Type;
 
 /** 
- * Updated by JCasGen Tue Sep 23 15:34:09 EDT 2014
+ * Updated by JCasGen Wed Sep 24 14:11:51 EDT 2014
  * @generated */
 public class WordAnalyser_Type extends Annotation_Type {
   /** @generated 

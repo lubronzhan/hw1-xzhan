@@ -36,7 +36,7 @@ import Java.WordAnalyser;
 /**
  * using lingpipe HMMChunker model to check whether targets are genetag words.
  */
-public class RoomNumberAnnotator extends JCasAnnotator_ImplBase {
+public class WordAnalyseAnnotator extends JCasAnnotator_ImplBase {
 
   /**
    * @see JCasAnnotator_ImplBase#process(JCas)
@@ -113,27 +113,7 @@ public class RoomNumberAnnotator extends JCasAnnotator_ImplBase {
 
         }
   
-//      for(int i = 0; i < length; i++){
-//        // Line number;
-//        String id = textStr[i].substring(0, 13);
-//        // Content after line number
-//        String line = textStr[i].substring(15, textStr[i].length()-1);
-//        // input content in each line into Stanford map
-//        Map<Integer,Integer> map = pos.getGeneSpans(line);        
-//        // to iterate through map to get each word
-//        Iterator entries =  map.entrySet().iterator();   
-//
-//        while(entries.hasNext()){
-//          Map.Entry<Integer, Integer> entry = (Entry<Integer, Integer>) entries.next();
-//          int key = entry.getKey();
-//          int value = entry.getValue();
-//          WordAnalyser annotation = new WordAnalyser(aJCas);
-//          annotation.setBegin(key);
-//          annotation.setEnd(value);
-//          annotation.setId(id);
-//          annotation.setSentence(line.substring(key, value)); 
-//          annotation.addToIndexes();
-//        }
+
         }  
       }catch (IOException e) {
         // TODO Auto-generated catch block
