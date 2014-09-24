@@ -19,20 +19,24 @@
 
 package Java;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.io.File;
+import java.io.IOException;
+import java.util.Iterator;
 
 import org.apache.uima.analysis_component.JCasAnnotator_ImplBase;
 import org.apache.uima.jcas.JCas;
-import Java.RoomNumber;
+
+import com.aliasi.chunk.Chunk;
+import com.aliasi.chunk.Chunker;
+import com.aliasi.chunk.Chunking;
+import com.aliasi.util.AbstractExternalizable;
+
+import Java.WordAnalyser;
 
 /**
- * Example annotator that detects room numbers using Java 1.4 regular expressions.
+ * using lingpipe HMMChunker model to check whether targets are genetag words.
  */
 public class RoomNumberAnnotator extends JCasAnnotator_ImplBase {
-  private Pattern mYorktownPattern = Pattern.compile("\\b[0-4]\\d-[0-2]\\d\\d\\b");
-
-  private Pattern mHawthornePattern = Pattern.compile("\\b[G1-4][NS]-[A-Z]\\d\\d\\b");
 
   /**
    * @see JCasAnnotator_ImplBase#process(JCas)
@@ -41,25 +45,104 @@ public class RoomNumberAnnotator extends JCasAnnotator_ImplBase {
     // get document text
     String docText = aJCas.getDocumentText();
     // search for Yorktown room numbers
-    Matcher matcher = mYorktownPattern.matcher(docText);
-    while (matcher.find()) {
-      // found one - create annotation
-      RoomNumber annotation = new RoomNumber(aJCas);
-      annotation.setBegin(matcher.start());
-      annotation.setEnd(matcher.end());
-      annotation.setBuilding("Yorktown");
-      annotation.addToIndexes();
-    }
-    // search for Hawthorne room numbers
-    matcher = mHawthornePattern.matcher(docText);
-    while (matcher.find()) {
-      // found one - create annotation
-      RoomNumber annotation = new RoomNumber(aJCas);
-      annotation.setBegin(matcher.start());
-      annotation.setEnd(matcher.end());
-      annotation.setBuilding("Hawthorne");
-      annotation.addToIndexes();
-    }
+    
+
+    WordAnalyser word = null;
+    try{
+
+      // Analyze Line by line
+      String [] textStr = docText.split("\n");
+      int length = textStr.length;
+      // lingpipe
+      Chunking chunking = null;
+      
+      // Read HHM model 
+      File modelFile = new File("src/main/resources/descriptor/ner/ne-en-bio-genetag-2.HmmChunker");
+      // model instance
+      Chunker chunker
+      = (Chunker) AbstractExternalizable.readObject(modelFile);
+      
+      // Analyse line info line by line
+      for(int i = 0; i < length; i++){
+        // Line number;
+        // Cut the 
+        String id = textStr[i].substring(0, 14);
+        // Content after line number
+        String line = textStr[i].substring(15, textStr[i].length());
+        
+        // Serialize chunk
+        chunking = chunker.chunk(line);
+        // Iterate chunking to get start and end
+        Iterator<Chunk> iter = chunking.chunkSet().iterator();
+        // Eliminate the space before each word
+        int spaceIn = 0; 
+        int spaceBefore = 0;
+        // Put each genetag word into annotation
+        while(iter.hasNext()){// Check whether exist
+          // get next Chunk
+          Chunk entry = iter.next();
+          int key = entry.start();
+          int value = entry.end();
+          
+          // count the number of space in sentence.
+          
+          String [] wordDivide = line.substring(key, value).split("\\s");
+          spaceIn = wordDivide.length - 1;
+          
+          // and before sentence
+          if(key == 0){
+            spaceBefore = 0;
+          }
+          else{
+            String [] beforeDivide = line.substring(0, key + 2).split("\\s");
+            spaceBefore = beforeDivide.length - 1;
+          }
+          
+          
+          // build annotation and add to each instance of WordAnalyser
+          WordAnalyser annotation = new WordAnalyser(aJCas);
+          
+          
+          
+          // value : the index after the word
+          annotation.setBegin(key - spaceBefore);
+          annotation.setEnd(value - 1 - spaceIn - spaceBefore);
+          annotation.setId(id);
+          annotation.setSentence(line.substring(key, value)); 
+          annotation.addToIndexes();
+
+        }
+  
+//      for(int i = 0; i < length; i++){
+//        // Line number;
+//        String id = textStr[i].substring(0, 13);
+//        // Content after line number
+//        String line = textStr[i].substring(15, textStr[i].length()-1);
+//        // input content in each line into Stanford map
+//        Map<Integer,Integer> map = pos.getGeneSpans(line);        
+//        // to iterate through map to get each word
+//        Iterator entries =  map.entrySet().iterator();   
+//
+//        while(entries.hasNext()){
+//          Map.Entry<Integer, Integer> entry = (Entry<Integer, Integer>) entries.next();
+//          int key = entry.getKey();
+//          int value = entry.getValue();
+//          WordAnalyser annotation = new WordAnalyser(aJCas);
+//          annotation.setBegin(key);
+//          annotation.setEnd(value);
+//          annotation.setId(id);
+//          annotation.setSentence(line.substring(key, value)); 
+//          annotation.addToIndexes();
+//        }
+        }  
+      }catch (IOException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+      } catch (ClassNotFoundException e) { // Hmm model
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+      }
+  
   }
 
 }

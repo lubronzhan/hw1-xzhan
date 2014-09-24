@@ -19,8 +19,10 @@
 
 package Java;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -32,13 +34,14 @@ import org.apache.uima.cas.impl.XmiCasSerializer;
 import org.apache.uima.collection.CasConsumer_ImplBase;
 import org.apache.uima.examples.SourceDocumentInformation;
 import org.apache.uima.jcas.JCas;
+import org.apache.uima.jcas.tcas.Annotation;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.apache.uima.resource.ResourceProcessException;
 import org.apache.uima.util.XMLSerializer;
 import org.xml.sax.SAXException;
 
 /**
- * A simple CAS consumer that writes the CAS to XMI format.
+ * A simple CAS consumer that writes the CAS to Text format.
  * <p>
  * This CAS Consumer takes one parameter:
  * <ul>
@@ -85,38 +88,72 @@ public class XmiWriterCasConsumer extends CasConsumer_ImplBase {
     } catch (CASException e) {
       throw new ResourceProcessException(e);
     }
-
-    // retreive the filename of the input file from the CAS
-    FSIterator it = jcas.getAnnotationIndex(SourceDocumentInformation.type).iterator();
+//    RoomNumber r = new RoomNumber(jcas);
+//    System.out.println(r.getBuilding());
+    FSIterator<Annotation> fs = jcas.getAnnotationIndex(WordAnalyser.type).iterator();
+    System.out.println("has"+fs.hasNext());
+    // New a file to store result
     File outFile = null;
-    if (it.hasNext()) {
-      SourceDocumentInformation fileLoc = (SourceDocumentInformation) it.next();
-      File inFile;
-      try {
-        inFile = new File(new URL(fileLoc.getUri()).getPath());
-        String outFileName = inFile.getName();
-        if (fileLoc.getOffsetInSource() > 0) {
-          outFileName += ("_" + fileLoc.getOffsetInSource());
-        }
-        outFileName += ".xmi";
-        outFile = new File(mOutputDir, outFileName);
-        modelFileName = mOutputDir.getAbsolutePath() + "/" + inFile.getName() + ".ecore";
-      } catch (MalformedURLException e1) {
-        // invalid URL, use default processing below
+    
+    File inFile;
+    try {
+      inFile = new File("src/main/resources/data/processed/hw1-xzhan.out");
+      BufferedWriter output = new BufferedWriter(new FileWriter(inFile));
+      while(fs.hasNext()){
+        String result = "";
+        Annotation a = fs.next();
+        WordAnalyser w = (WordAnalyser) a;
+        result += w.getId();
+        result += "|";
+        result += w.getBegin();
+        result += " ";
+        result += w.getEnd();
+        result += "|";
+        result += w.getSentence();
+        result += "\r\n";
+        System.out.println(result);
+        output.write(result);
       }
+      
+      output.close();
+    } catch (IOException e1) {
+      // invalid URL, use default processing below
     }
+
+    // retrieve the filename of the input file from the CAS
+//    FSIterator it = jcas.getAnnotationIndex(SourceDocumentInformation.type).iterator();
+//    File outFile = null;
+//    if (it.hasNext()) {
+//      SourceDocumentInformation fileLoc = (SourceDocumentInformation) it.next();
+//      File inFile;
+//      try {
+//        inFile = new File(new URL(fileLoc.getUri()).getPath());
+//        String outFileName = inFile.getName();
+//        if (fileLoc.getOffsetInSource() > 0) {
+//          outFileName += ("_" + fileLoc.getOffsetInSource());
+//        }
+//
+//        outFileName += ".out";
+//        outFile = new File(mOutputDir, outFileName);
+//        modelFileName = mOutputDir.getAbsolutePath() + "/" + inFile.getName() + ".ecore";
+//      } catch (MalformedURLException e1) {
+//        // invalid URL, use default processing below
+//      }
+//    }
     if (outFile == null) {
-      outFile = new File(mOutputDir, "doc" + mDocNum++ + ".xmi");     
+      outFile = new File(mOutputDir, "doc" + mDocNum++ + ".out");     
     }
     // serialize XCAS and write to output file
-    try {
-      writeXmi(jcas.getCas(), outFile, modelFileName);
-    } catch (IOException e) {
-      throw new ResourceProcessException(e);
-    } catch (SAXException e) {
-      throw new ResourceProcessException(e);
-    }
-  }
+//    try {
+     
+     
+//      writeXmi(jcas.getCas(), outFile, modelFileName);
+//    } catch (IOException e) {
+//      throw new ResourceProcessException(e);
+//    } catch (SAXException e) {
+//      throw new ResourceProcessException(e);
+//    }
+//  }
 
   /**
    * Serialize a CAS to a file in XMI format
@@ -130,19 +167,29 @@ public class XmiWriterCasConsumer extends CasConsumer_ImplBase {
    * 
    * @throws ResourceProcessException
    */
-  private void writeXmi(CAS aCas, File name, String modelFileName) throws IOException, SAXException {
-    FileOutputStream out = null;
-
-    try {
-      // write XMI
-      out = new FileOutputStream(name);
-      XmiCasSerializer ser = new XmiCasSerializer(aCas.getTypeSystem());
-      XMLSerializer xmlSer = new XMLSerializer(out, false);
-      ser.serialize(aCas, xmlSer.getContentHandler());
-    } finally {
-      if (out != null) {
-        out.close();
-      }
-    }
+//  private void writeXmi(CAS aCas, File name, String modelFileName) throws IOException, SAXException {
+//    FileOutputStream out = null;
+//
+//    try {
+//      // write XMI
+//      out = new FileOutputStream(name);
+//      XmiCasSerializer ser = new XmiCasSerializer(aCas.getTypeSystem());
+//      XMLSerializer xmlSer = new XMLSerializer(out, false);
+//      ser.serialize(aCas, xmlSer.getContentHandler());
+//      try{
+//        JCas jcas = aCas.getJCas();
+//        
+////        String s = jcas.getDocumentText();
+////        System.out.print(s);
+//      }catch(Exception e){
+//        System.out.print("Cast failed");
+//      }
+//      
+//    } finally {
+//      if (out != null) {
+//        out.close();
+//      }
+//    }
+//  }
   }
 }

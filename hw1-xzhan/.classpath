@@ -32,5 +32,6 @@
 			<attribute name="javadoc_location" value="file:/C:/Program Files/apache-uima/docs/api"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="/Users/lubron/Downloads/lingpipe-4.1.0/lingpipe-4.1.0.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
