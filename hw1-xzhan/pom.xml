@@ -12,7 +12,7 @@
       
     </repository>
     <repository>
-          <id>oaqa</id>
+          <id>thirdpartyrepository</id>
           <url>http://mu.lti.cs.cmu.edu:8081/nexus/content/repositories/thirdparty</url>
      </repository>
   </repositories>
