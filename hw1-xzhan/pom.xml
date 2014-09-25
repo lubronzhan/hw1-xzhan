@@ -4,7 +4,7 @@
   <groupId>edu.cmu.lti.11791.f14.hw1</groupId>
   <artifactId>hw1-xzhan</artifactId>
   
-  <version>1.0-SNAPSHOT</version>
+  <version>1.0</version>
   <repositories>
     <repository>
       <id>oaqa</id>
@@ -110,5 +110,6 @@
   <scm>
   	<developerConnection>scm:git:git:@github.com:lubronzhan/hw1-xzhan.git</developerConnection>
   	<connection>scm:git:git:@github.com:lubronzhan/hw1-xzhan.git</connection>
+    <tag>hw1-xzhan-1.0</tag>
   </scm>
 </project>

@@ -21,7 +21,7 @@ public class AccTest {
   public void AccuracyAndRecall(){
     
     // Read output
-    File file = new File("src/main/resources/data/processed/hw1-xzhan.out");
+    File file = new File("hw1-xzhan.out");
     BufferedReader reader = null;
     
     // count how many lines match.

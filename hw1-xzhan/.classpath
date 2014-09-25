@@ -33,5 +33,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="/Users/lubron/Downloads/lingpipe-4.1.0/lingpipe-4.1.0.jar"/>
+	<classpathentry kind="var" path="UIMA_HOME"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

@@ -73,7 +73,7 @@ public class XmiWriterCasConsumer extends CasConsumer_ImplBase {
     // New a file to store result
     File outFile = null;
     try {
-      outFile = new File("src/main/resources/data/processed/hw1-xzhan.out");
+      outFile = new File("hw1-xzhan.out");
       BufferedWriter output = new BufferedWriter(new FileWriter(outFile));
       while(fs.hasNext()){
         String result = "";

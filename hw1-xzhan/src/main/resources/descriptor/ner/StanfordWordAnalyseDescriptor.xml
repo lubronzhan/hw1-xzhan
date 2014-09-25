@@ -4,7 +4,7 @@
   <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
   <primitive>true</primitive>  <annotatorImplementationName>Java.StanfordWordAnalyseAnnotator</annotatorImplementationName>
   <analysisEngineMetaData>
-    <name>roomNumberDescriptor</name>
+    <name>StanfordWordAnalyseAnnotator</name>
     <description/>
     <version>1.0</version>
     <vendor/>
