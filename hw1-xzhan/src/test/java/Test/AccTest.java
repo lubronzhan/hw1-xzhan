@@ -69,11 +69,12 @@ public class AccTest {
       System.out.println("Not able to read file");
     }
     
-    System.out.println(lineMatch);
-    System.out.println(lineSampleNum);
-    System.out.println(lineOutNum);
-    
+    System.out.println("Hitting number: "+lineMatch);
+    System.out.println("Number of sample.out: "+lineSampleNum);
+    System.out.println("Number of hw1-xzhan: "+lineOutNum);
+    // The Precise
     accPer = (double) lineMatch / lineOutNum;
+    // The recall
     recallPer = (double) lineMatch / lineSampleNum;
     
   }
@@ -86,7 +87,7 @@ public class AccTest {
   public static void main(String []arg){
     AccTest acc = new AccTest();
     acc.AccuracyAndRecall();
-    System.out.println("The accuracy of our system is " + acc.getAcc());
+    System.out.println("The precise of our system is " + acc.getAcc());
     System.out.println("The recall of our system is " + acc.getRecall());
   }
 }

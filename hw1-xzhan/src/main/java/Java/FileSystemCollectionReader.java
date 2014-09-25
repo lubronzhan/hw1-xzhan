@@ -155,13 +155,9 @@ public class FileSystemCollectionReader extends CollectionReader_ImplBase {
       ((DocumentAnnotation) jcas.getDocumentAnnotationFs()).setLanguage(mLanguage);
     }
 
-    // Also store location of source document in CAS. This information is critical
-    // if CAS Consumers will need to know where the original document contents are located.
-    // For example, the Semantic Search CAS Indexer writes this information into the
-    // search index that it creates, which allows applications that use the search index to
-    // locate the documents that satisfy their semantic queries.
+    
     SourceDocumentInformation srcDocInfo = new SourceDocumentInformation(jcas);
-    srcDocInfo.setUri(file.getAbsoluteFile().toURL().toString());
+    
     srcDocInfo.setOffsetInSource(0);
     srcDocInfo.setDocumentSize((int) file.length());
     srcDocInfo.setLastSegment(mCurrentIndex == mFiles.size());

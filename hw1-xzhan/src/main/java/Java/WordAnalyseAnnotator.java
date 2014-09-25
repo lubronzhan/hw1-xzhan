@@ -57,7 +57,7 @@ public class WordAnalyseAnnotator extends JCasAnnotator_ImplBase {
       Chunking chunking = null;
       
       // Read HHM model 
-      File modelFile = new File("src/main/resources/descriptor/ner/ne-en-bio-genetag-2.HmmChunker");
+      File modelFile = new File("src/main/resources/LingpipeModel/ne-en-bio-genetag-2.HmmChunker");
       // model instance
       Chunker chunker
       = (Chunker) AbstractExternalizable.readObject(modelFile);
