@@ -3,17 +3,19 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>edu.cmu.lti.11791.f14.hw1</groupId>
   <artifactId>hw1-xzhan</artifactId>
-  <version>1.7-SNAPSHOT</version>
+  <version>1.8-SNAPSHOT</version>
+    <scm>
+  	<developerConnection>scm:git:git:@github.com:lubronzhan/hw1-xzhan.git</developerConnection>
+  	<connection>scm:git:git:@github.com:lubronzhan/hw1-xzhan.git</connection>
+    <tag>hw1-xzhan</tag>
+  </scm>
   <repositories>
     <repository>
       <id>oaqa</id>
       <url>http://mu.lti.cs.cmu.edu:8081/nexus/content/groups/course</url>
       
     </repository>
-    <repository>
-          <id>thirdpartyrepository</id>
-          <url>http://mu.lti.cs.cmu.edu:8081/nexus/content/repositories/thirdparty</url>
-     </repository>
+
   </repositories>
   <distributionManagement>
     <repository>
@@ -118,9 +120,5 @@
     	<version>4.1.0</version>
     </dependency>
   </dependencies>
-  <scm>
-  	<developerConnection>scm:git:git:@github.com:lubronzhan/hw1-xzhan.git</developerConnection>
-  	<connection>scm:git:git:@github.com:lubronzhan/hw1-xzhan.git</connection>
-    <tag>hw1-xzhan-1.5</tag>
-  </scm>
+
 </project>
