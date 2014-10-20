@@ -33,7 +33,7 @@
         <descriptor>
             <import location="resources/descriptor/XmiWriterCasConsumer.xml"/>
         </descriptor>
-            <deploymentParameters/>
+            <deploymentParameters></deploymentParameters>
         <errorHandling>
             <errorRateThreshold action="terminate" value="0/1000"/>
             <maxConsecutiveRestarts action="terminate" value="30"/>

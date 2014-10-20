@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>edu.cmu.lti.11791.f14.hw1</groupId>
   <artifactId>hw1-xzhan</artifactId>
-  <version>1.10-SNAPSHOT</version>
+  <version>1.11-SNAPSHOT</version>
     <scm>
   	<developerConnection>scm:git:git:@github.com:lubronzhan/hw1-xzhan.git</developerConnection>
   	<connection>scm:git:git:@github.com:lubronzhan/hw1-xzhan.git</connection>
